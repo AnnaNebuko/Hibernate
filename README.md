@@ -7,11 +7,11 @@
 ## Implementations of the JPA specification (concrete libraries, classes):
 1.OpenJPA(Apache)
 
-2. Hibernate
+2.Hibernate
 
 3.Toplink
 
-4. EclipseLink
+4.EclipseLink
 
 Hibernate executes SQL queries via JDBC (connection, Statement, PreparedStatement, Prepared Statement).
 
