@@ -1,6 +1,7 @@
 package com.annebuko.hibernate.model;
 
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -38,14 +40,15 @@ public class Question {
 
   @ManyToMany
   @JoinTable(
-      name = "etests_answers",
-      joinColumns = @JoinColumn(name = "etest_id"),
+      name = "questions_answers",
+      joinColumns = @JoinColumn(name = "question_id"),
       inverseJoinColumns = @JoinColumn(name = "answer_id")
   )
   Set<Answer> answers;
 
-  @Column(nullable = false)
-  // OneToMany relationship with Difficulty
-  Long complexity_id;
-
+  //Many questions have one topic
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "topic_id",
+      referencedColumnName = "id")
+  Topic topic;
 }

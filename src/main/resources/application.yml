@@ -1,0 +1,18 @@
+server:
+  port: 8585
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: jpaspring
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hibernate
+    username: postgres
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
