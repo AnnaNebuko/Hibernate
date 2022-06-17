@@ -27,7 +27,7 @@ import lombok.NoArgsConstructor;
 public class Question {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   Long id;
 
   @ManyToMany
@@ -38,9 +38,8 @@ public class Question {
   )
   Set<Answer> answers;
 
-  //Many questions have one topic
   @ManyToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "topic",
+  @JoinColumn(name = "topic_id",
       referencedColumnName = "id")
   Topic topic;
 }
